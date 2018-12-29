@@ -126,4 +126,13 @@ public class NettyManager {
     public static void sendMsg(String result, boolean isNCB) {
         NettyClientIntHandler.sendMsg(ctx, result, isNCB);
     }
+
+    /**
+     * 断开tcp
+     */
+    public static void closeTCP() {
+        if (ctx != null) {
+            ctx.channel().close();
+        }
+    }
 }
