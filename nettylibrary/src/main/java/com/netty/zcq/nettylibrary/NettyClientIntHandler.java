@@ -11,6 +11,7 @@ public class NettyClientIntHandler extends SimpleChannelInboundHandler<String> {
     public void setOnMessageListener(MessageListener onMessageListener) {
         this.onMessageListener = onMessageListener;
     }
+
     // 接收server端的消息
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
@@ -62,18 +63,16 @@ public class NettyClientIntHandler extends SimpleChannelInboundHandler<String> {
             ctx.close();
     }
 
-    // 发送消息
-    public static void sendMsg(ChannelHandlerContext ctx, String msg) {
-        if (ctx != null) {
-            ctx.writeAndFlush(msg);
-        }
-
-    }
 
     // 发送消息
     public static void sendMsg(ChannelHandlerContext ctx, String msg, boolean isNCB) {
         if (ctx != null) {
-            ctx.writeAndFlush(msg + "\r\n");
+            if (isNCB) {
+                ctx.writeAndFlush(msg + "\r\n");
+            } else {
+                ctx.writeAndFlush(msg);
+            }
+
         }
 
     }
