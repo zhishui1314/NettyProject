@@ -6,9 +6,9 @@ import io.netty.handler.timeout.IdleState;
 import io.netty.handler.timeout.IdleStateEvent;
 
 public class NettyClientIntHandler extends SimpleChannelInboundHandler<String> {
-    private NettyMessageListener onMessageListener;
+    private MessageListener onMessageListener;
 
-    public void setOnMessageListener(NettyMessageListener onMessageListener) {
+    public void setOnMessageListener(MessageListener onMessageListener) {
         this.onMessageListener = onMessageListener;
     }
     // 接收server端的消息

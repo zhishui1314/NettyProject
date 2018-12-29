@@ -52,19 +52,19 @@ public class NettyManager {
     public static void dealWithTCP(boolean isNCB, final String ip, int port, final NettyMessageListener nettyMessageListener) {
         try {
             NettyClientIntHandler nettyClientIntHandler = new NettyClientIntHandler();
-            nettyClientIntHandler.setOnMessageListener(new NettyMessageListener() {
+            nettyClientIntHandler.setOnMessageListener(new MessageListener() {
                 @Override
                 public void onMessage(ChannelHandlerContext type, int sign, String result) {
                     ctx = type;
-                    nettyMessageListener.onMessage(type, sign, result);
+                    nettyMessageListener.onMessage(sign, result);
                 }
             });
             NettyClient nettyClient = new NettyClient();
-            nettyClient.setNettyMessageListener(new NettyMessageListener() {
+            nettyClient.setNettyMessageListener(new MessageListener() {
                 @Override
                 public void onMessage(ChannelHandlerContext type, int sign, String result) {
                     ctx = type;
-                    nettyMessageListener.onMessage(type, sign, result);
+                    nettyMessageListener.onMessage(sign, result);
                 }
             });
             nettyClient.connect(isNCB, ip, port, nettyClientIntHandler);
@@ -84,19 +84,19 @@ public class NettyManager {
     public static void dealWithTCP(final String ip, int port, final NettyMessageListener nettyMessageListener) {
         try {
             NettyClientIntHandler nettyClientIntHandler = new NettyClientIntHandler();
-            nettyClientIntHandler.setOnMessageListener(new NettyMessageListener() {
+            nettyClientIntHandler.setOnMessageListener(new MessageListener() {
                 @Override
                 public void onMessage(ChannelHandlerContext type, int sign, String result) {
                     ctx = type;
-                    nettyMessageListener.onMessage(type, sign, result);
+                    nettyMessageListener.onMessage(sign, result);
                 }
             });
             NettyClient nettyClient = new NettyClient();
-            nettyClient.setNettyMessageListener(new NettyMessageListener() {
+            nettyClient.setNettyMessageListener(new MessageListener() {
                 @Override
                 public void onMessage(ChannelHandlerContext type, int sign, String result) {
                     ctx = type;
-                    nettyMessageListener.onMessage(type, sign, result);
+                    nettyMessageListener.onMessage(sign, result);
                 }
             });
             nettyClient.connect(ip, port, nettyClientIntHandler);
@@ -110,6 +110,7 @@ public class NettyManager {
 
     /**
      * 发送数据
+     *
      * @param result
      */
     public static void sendMsg(String result) {
@@ -118,6 +119,7 @@ public class NettyManager {
 
     /**
      * 发送数据处理粘包拆包
+     *
      * @param result
      * @param isNCB
      */

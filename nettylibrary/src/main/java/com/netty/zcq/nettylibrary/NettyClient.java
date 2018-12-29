@@ -15,9 +15,9 @@ import io.netty.handler.timeout.IdleStateHandler;
 
 public class NettyClient {
     private EventLoopGroup workerGroup;
-    private NettyMessageListener nettyMessageListener = null;
+    private MessageListener nettyMessageListener = null;
 
-    public void setNettyMessageListener(NettyMessageListener nettyMessageListener) {
+    public void setNettyMessageListener(MessageListener nettyMessageListener) {
         this.nettyMessageListener = nettyMessageListener;
     }
 
