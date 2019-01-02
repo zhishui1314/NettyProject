@@ -16,8 +16,10 @@
 		 implementation 'com.github.zhishui1314:NettyProject:5.0'
 		}
 	  }
+	  
 > 代码解释
- //true 是否处理粘包拆包 \r\n格式
+
+        //true 是否处理粘包拆包 \r\n格式
         NettyManager.connetTCP(true, "172.16.100.100", 8080, new NettyMessageListener() {
             @Override
             public void onMessage(int type, String result) {
